@@ -2,7 +2,7 @@ import java.util.*;
 
 import java.io.*;
 
-public class graph {
+public class graphTheoryAlgos {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 
