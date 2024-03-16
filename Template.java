@@ -1,5 +1,8 @@
 import java.util.*;
 import java.io.*;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static java.lang.Math.abs;
 
 public class Template {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -7,7 +10,14 @@ public class Template {
 	static PrintWriter out = new PrintWriter(System.out);
 
 	public static void main(String[] args) throws IOException {
-		
+
+		int T = readInt();
+
+		while (T-- > 0) {
+			
+		}
+
+		out.close();
 	}
 
 	static class Pair {
@@ -56,20 +66,34 @@ public class Template {
 		return next().charAt(0);
 	}
 
-	static int mod = (int) 1e9 + 7;
-
 	static String readLine() throws IOException {
 		return br.readLine().trim();
 	}
 
-	static long pow(long x, long exp) {
-		if (exp == 0)
-			return 1;
-		long t = pow(x, exp / 2);
-		t = t * t % mod;
-		if (exp % 2 == 0)
-			return t;
-		return t * x % mod;
+	public static long power(long x, long y, long p) {
+		// 0^0 = 1
+		long res = 1L;
+		x = x % p;
+		while (y > 0) {
+			if ((y & 1) == 1)
+				res = (res * x) % p;
+			y >>= 1;
+			x = (x * x) % p;
+		}
+		return res;
+	}
+
+	public static long power(long x, long y) {
+		// 0^0 = 1
+		long res = 1L;
+
+		while (y > 0) {
+			if ((y & 1) == 1)
+				res = (res * x);
+			y >>= 1;
+			x = (x * x);
+		}
+		return res;
 	}
 
 	static long lcm(long a, long b) {
@@ -107,4 +131,15 @@ public class Template {
 		}
 		return ans;
 	}
+
+	public static void sort(int[] arr) {
+
+		ArrayList<Integer> ls = new ArrayList<Integer>();
+		for (int x : arr)
+			ls.add(x);
+		Collections.sort(ls);
+		for (int i = 0; i < arr.length; i++)
+			arr[i] = ls.get(i);
+	}
 }
+
